@@ -20,7 +20,7 @@ phases:
 
   build:
     commands:
-      - sonar-scanner -Dsonar.login=$LOGIN -Dsonar.projectKey="Arthurflame_Tasks" -Dsonar.organization="arthurflame" -Dsonar.pullrequest.provider=Github
+      - sonar-scanner -Dsonar.login=$LOGIN -Dsonar.projectKey="Arthurflame_Tasks" -Dsonar.organization=arthurflame -Dsonar.pullrequest.provider=Github -Dsonar.pullrequset.github.repository=arthurflame/Tasks -Dsonar.pullrequest.base="${CODEBUILD_WEBHOOK_BASE_REF}" -Dsonar.pullrequest.branch="${CODEBUILD_WEBHOOK_HEAD_REF}" -Dsonar.pullrequest.key="${CODEBUILD_WEBHOOK_EVENT}"
 
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
