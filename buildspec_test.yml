@@ -1,0 +1,33 @@
+version: 0.2
+env:
+  parameter-store:
+    LOGIN: /arthurflame/Tasks/sonar/token
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+      golang: 1.13
+
+  pre_build:
+    commands:
+        - apt-get update
+        - apt-get install -y jq
+        - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.4.0.2170-linux.zip
+        - unzip ./sonar-scanner-cli-4.4.0.2170-linux.zip
+        - mv sonar-scanner-4.4.0.2170-linux /codebuild/
+        - export PATH=$PATH:/codebuild/sonar-scanner-4.4.0.2170-linux/bin/
+
+  build:
+    commands:
+      - sonar-scanner -Dsonar.login=$LOGIN -Dsonar.projectKey="Arthurflame_Tasks" -Dsonar.organization="arthurflame" -Dsonar.pullrequest.provider=Github
+
+      - sleep 5
+      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
+      - cat result.json
+      - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
+
+artifacts:
+  files:
+    - '**/*'
+
