@@ -1,7 +1,7 @@
 version: 0.2
 env:
   parameter-store:
-    LOGIN: /arthurflame/Tasks/sonar/token
+    LOGIN: /arthurflame/sonar/account/token
 
 phases:
   install:
@@ -26,7 +26,9 @@ phases:
       - echo "${CODEBUILD_WEBHOOK_MERGE_COMMIT}"
       - echo "${CODEBUILD_WEBHOOK_TRIGGER}"
       - export PULL_NUM=$(echo $CODEBUILD_WEBHOOK_TRIGGER | awk 'BEGIN{FS="/"} {print $2}')
-      - sonar-scanner -X -Dsonar.host.url="https://sonarcloud.io" -Dsonar.login=$LOGIN -Dsonar.projectKey="Arthurflame_Tasks" -Dsonar.organization="arthurflame" -Dsonar.pullrequest.base="${CODEBUILD_WEBHOOK_BASE_REF}" -Dsonar.pullrequest.branch="${CODEBUILD_WEBHOOK_HEAD_REF}" -Dsonar.pullrequest.key="${PULL_NUM}"
+      - export BRANCH=$(echo $CODEBUILD_WEBHOOK_HEAD_REF | awk 'BEGIN{FS="/"} {print $3}')
+      - export BASE_REF=$(echo $CODEBUILD_WEBHOOK_BASE_REF | awk 'BEGIN{FS="/"} {print $3}')
+      - sonar-scanner -Dsonar.host.url="https://sonarcloud.io" -Dsonar.login=$LOGIN -Dsonar.projectKey="Arthurflame_Tasks" -Dsonar.organization="arthurflame" -Dsonar.pullrequest.base="${BASE_REF}" -Dsonar.pullrequest.branch="${BRANCH}" -Dsonar.pullrequest.key="${PULL_NUM}"
 
       - sleep 5
       - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=$Project >result.json
