@@ -16,7 +16,7 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t arturgoapp:Latest .
-      - docker tag arturgoapp:Latest 242307434447.dkr.ecr.us-east-1.amazonaws.com/arturgoapp:Latest
+      - docker tag arturgoapp:Latest:242307434447.dkr.ecr.us-east-1.amazonaws.com/arturgoapp:Latest
   post_build:
     commands:
       - echo Build completed on `date`
