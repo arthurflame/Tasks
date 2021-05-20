@@ -1,9 +1,9 @@
 version: 0.2
 env:
   variables:
-    AWS_ACCOUNT_ID=139919733810
-    AWS_DEFAULT_REGION=eu-central-1
-    IMAGE_REPO_NAME=to_deploy
+    AWS_ACCOUNT_ID: 139919733810
+    AWS_DEFAULT_REGION: eu-central-1
+    IMAGE_REPO_NAME: to_deploy
 
 
 phases:
