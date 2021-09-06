@@ -11,6 +11,7 @@ phases:
     commands:
       - apt-get update && apt-get -y install sqlite3
       - cat schema.sql | sqlite3 tasks.db
+      - go get -t ./...
   build:
     commands:
       - go build -o application application.go
