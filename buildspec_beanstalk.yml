@@ -20,7 +20,7 @@ phases:
       - cat schema.sql | sqlite3 tasks.db
   build:
     commands:
-      - go build -o application application.go
+      - go build -o application
   post_build:
     commands:
       - zip ../${APP_NAME}.zip -r * .[^.]*
