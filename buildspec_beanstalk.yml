@@ -16,6 +16,7 @@ phases:
       - apt-get update && apt-get -y install sqlite3
       - cd "/go/src/${PACKAGE}"
       - go mod init $APP_NAME
+      - go mod tidy
       - go get -t ./...
       - cat schema.sql | sqlite3 tasks.db
   build:
