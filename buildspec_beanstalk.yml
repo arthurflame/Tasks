@@ -1,22 +1,31 @@
 version: 0.2
 env:
   variables:
-    APPLICATION: "Tasks"
+    PACKAGE: "github.com/arthurflame/Tasks"
+    APP_NAME: "Tasks"
 phases:
   install:
     runtime-versions:
       golang: 1.16
-
+    commands:
+      - mkdir -p "/go/src/$(dirname ${PACKAGE})"
+      - ln -s "${CODEBUILD_SRC_DIR}" "/go/src/${PACKAGE}"
   pre_build:
     commands:
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
       - apt-get update && apt-get -y install sqlite3
-      - cat schema.sql | sqlite3 tasks.db
+      - cd "/go/src/${PACKAGE}"
       - go get -t ./...
+      - cat schema.sql | sqlite3 tasks.db
   build:
     commands:
       - go build -o application application.go
-      - zip ../${APPLICATION}.zip -r * .[^.]*
+  post_build:
+    commands:
+      - zip ../${APP_NAME}.zip -r * .[^.]*
+
 
 artifacts:
   files:
-    - '../${APPLICATION}.zip'
+    - '../${APP_NAME}.zip'
+  discard-paths: yes
