@@ -27,12 +27,12 @@ phases:
       - go build -o application
   post_build:
     commands:
-      - zip ../${APP_NAME}.zip -r * .[^.]*
+#      - zip ../${APP_NAME}.zip -r * .[^.]*
 
 
 artifacts:
   files:
-    - '**/*'
+    - '*'
     - './templates/'
     - './public/'
   discard-paths: yes
