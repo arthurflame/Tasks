@@ -33,6 +33,6 @@ phases:
 artifacts:
   files:
     - './**'
-    - 'templates/**/*'
-    - 'public/**/*'
+    - 'templates'
+    - 'public'
   discard-paths: yes
