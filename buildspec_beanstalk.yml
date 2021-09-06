@@ -1,0 +1,21 @@
+version: 0.2
+env:
+  variables:
+    APPLICATION: "Tasks"
+phases:
+  install:
+    runtime-versions:
+      golang: 1.16
+
+  pre_build:
+    commands:
+      - apt-get update && apt-get -y install sqlite3
+      - cat schema.sql | sqlite3 tasks.db
+  build:
+    commands:
+      - go build -o application application.go
+      - zip ../${APPLICATION}.zip -r * .[^.]*
+
+artifacts:
+  files:
+    - '../${APPLICATION}.zip
