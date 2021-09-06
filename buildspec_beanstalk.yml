@@ -32,7 +32,8 @@ phases:
 
 artifacts:
   files:
-    - '*'
+    - '**/*'
     - './templates/'
     - './public/'
-#  discard-paths: yes
+  base-directory: 'Tasks'
+  discard-paths: yes
