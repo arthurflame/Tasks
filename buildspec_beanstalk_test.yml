@@ -13,7 +13,7 @@ phases:
   pre_build:
     commands:
 #      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-      - apt-get update && apt-get -y install sqlite3
+      - apt-get update && apt-get -y install sqlite3 awscli
       - cd "/go/src/${PACKAGE}"
 #      - go mod init $APP_NAME
 #      - go mod tidy
@@ -29,8 +29,9 @@ phases:
   post_build:
     commands:
       - zip ./${APP_NAME}.zip -r * .[^.]*
+      - aws s3 cp ${APP_NAME}.zip s3://codepipeline-eu-central-1-820018384930/eb-dep/packaged/
 
 
-artifacts:
-  files:
-    - '${APP_NAME}.zip'
+#artifacts:
+#  files:
+#    - '${APP_NAME}.zip'
