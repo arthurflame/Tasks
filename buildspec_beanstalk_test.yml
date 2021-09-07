@@ -33,5 +33,3 @@ phases:
 artifacts:
   files:
     - './*'
-  name: test.zip
-  discard-paths: yes
