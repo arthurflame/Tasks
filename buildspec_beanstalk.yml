@@ -31,9 +31,7 @@ phases:
 
 
 artifacts:
-  type: zip
-  paths:
+  files:
     - '**/*'
-    - './templates/'
-    - './public/'
+  name: test.zip
   discard-paths: yes
