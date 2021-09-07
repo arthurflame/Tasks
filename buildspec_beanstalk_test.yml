@@ -29,10 +29,12 @@ phases:
   post_build:
     commands:
       - aws s3 ls
-      - zip ./${APP_NAME}.zip -r * .[^.]*
+#      - zip ./${APP_NAME}.zip -r * .[^.]*
 #      - aws s3 cp ${APP_NAME}.zip s3://codepipeline-eu-central-1-820018384930/eb-dep/packaged/
 
 
 artifacts:
   files:
-    - '${APP_NAME}.zip'
+    - './**/*'
+    - './*'
+  discard-paths: no
