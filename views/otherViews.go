@@ -22,7 +22,7 @@ import (
 //the templates folder
 func PopulateTemplates() {
 	var allFiles []string
-	templatesDir := ""
+	templatesDir := "./wewew/"
 	files, err := ioutil.ReadDir(templatesDir)
 	if err != nil {
 		log.Println(err)
