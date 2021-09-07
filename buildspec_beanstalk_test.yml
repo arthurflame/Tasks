@@ -28,11 +28,9 @@ phases:
       - ls $CODEBUILD_SRC_DIR
   post_build:
     commands:
-#      - zip ../${APP_NAME}.zip -r * .[^.]*
+      - zip ./${APP_NAME}.zip -r * .[^.]*
 
 
 artifacts:
   files:
-    - './*'
-  base-directory: 'templates'
-  discard-paths: yes
+    - '${APP_NAME}.zip'
