@@ -23,8 +23,9 @@ phases:
       - cat schema.sql | sqlite3 tasks.db
   build:
     commands:
-      -
       - go build -o application
+      - echo $CODEBUILD_SRC_DIR
+      - ls $CODEBUILD_SRC_DIR
   post_build:
     commands:
 #      - zip ../${APP_NAME}.zip -r * .[^.]*
