@@ -12,13 +12,15 @@ phases:
       - ln -s "${CODEBUILD_SRC_DIR}" "/go/src/${PACKAGE}"
   pre_build:
     commands:
-      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+#      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
       - apt-get update && apt-get -y install sqlite3
       - cd "/go/src/${PACKAGE}"
+
 #      - go mod init $APP_NAME
 #      - go mod tidy
 #      - go install
 #      - go get -d -u ./...
+      - echo $APP_TARGET_URL
       - go get -t ./...
       - cat schema.sql | sqlite3 tasks.db
   build:
