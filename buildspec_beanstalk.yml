@@ -21,8 +21,7 @@ phases:
 #      - go mod tidy
 #      - go install
 #      - go get -d -u ./...
-      - echo "---------------------"
-      - echo "APP TARGET URL IS - " $APP_TARGET_URL
+
       - go get -t ./...
       - cat schema.sql | sqlite3 tasks.db
   build:
