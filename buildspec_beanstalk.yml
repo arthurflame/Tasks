@@ -3,6 +3,7 @@ env:
   variables:
     PACKAGE: "github.com/arthurflame/Tasks"
     APP_NAME: "Tasks"
+    APP_TARGET_URL:
 phases:
   install:
     runtime-versions:
@@ -20,7 +21,8 @@ phases:
 #      - go mod tidy
 #      - go install
 #      - go get -d -u ./...
-      - echo $APP_TARGET_URL
+      - echo "---------------------"
+      - echo "APP TARGET URL IS - " $APP_TARGET_URL
       - go get -t ./...
       - cat schema.sql | sqlite3 tasks.db
   build:
