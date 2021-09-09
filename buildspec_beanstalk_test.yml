@@ -30,7 +30,7 @@ phases:
       - ls $CODEBUILD_SRC_DIR
   post_build:
     commands:
-      - aws s3 ls
+#      - aws s3 ls
 #      - zip ./${APP_NAME}.zip -r * .[^.]*
 #      - aws s3 cp ${APP_NAME}.zip s3://codepipeline-eu-central-1-820018384930/eb-dep/packaged/
 
