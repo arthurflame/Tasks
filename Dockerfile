@@ -17,5 +17,5 @@ RUN go get -d -v ./...
 RUN cat schema.sql | sqlite3 tasks.db
 RUN go build
 
-EXPOSE 8080
+EXPOSE 5000
 ENTRYPOINT ./goapp
