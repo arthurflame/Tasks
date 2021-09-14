@@ -4,7 +4,7 @@ env:
     AWS_ACCOUNT_ID: "652304321750"
     AWS_DEFAULT_REGION: "eu-central-1"
     IMAGE_REPO_NAME: "tasks"
-    TAG: "latest"
+    IMAGE_TAG: "latest"
 
 
 phases:
@@ -16,7 +16,6 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-      - IMAGE_TAG=v1.$CODEBUILD_BUILD_NUMBER
   build:
     commands:
       - echo Build started on `date`
