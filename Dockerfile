@@ -15,7 +15,7 @@ RUN go env -w GO111MODULE=auto
 
 RUN go get -d -v ./...
 RUN cat schema.sql | sqlite3 tasks.db
-EXPOSE 8080
 RUN go build
- 
+
+EXPOSE 8080
 ENTRYPOINT ./goapp
