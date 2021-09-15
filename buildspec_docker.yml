@@ -33,6 +33,6 @@ phases:
 
 artifacts:
   files:
-    - './.platform'
+    - './.platform/nginx/conf_d/testfile.conf'
     - './Dockerrun.aws.json'
   discard-paths: no
