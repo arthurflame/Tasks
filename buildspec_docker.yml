@@ -28,11 +28,11 @@ phases:
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - aws s3 cp s3://pre-grafana/Dockerrun.aws.json .
-      - mkdir -p .platform/nginx/conf_d/
-      - touch .platform/nginx/conf_d/testfile.conf
+      - mkdir -p .platform/nginx/conf.d/
+      - touch .platform/nginx/conf.d/testfile.conf
 
 artifacts:
   files:
-    - './.platform/nginx/conf_d/testfile.conf'
+    - './.platform/nginx/conf.d/testfile.conf'
     - './Dockerrun.aws.json'
-  discard-paths: yes
+  discard-paths: no
