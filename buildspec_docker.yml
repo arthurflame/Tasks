@@ -35,4 +35,4 @@ artifacts:
   files:
     - './.platform/nginx/conf_d/testfile.conf'
     - './Dockerrun.aws.json'
-  discard-paths: no
+  discard-paths: yes
