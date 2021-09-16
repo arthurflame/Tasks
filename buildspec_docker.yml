@@ -36,4 +36,4 @@ artifacts:
     - './utils/'
     - 'buildspec*'
     - './Dockerrun.aws.json'
-  discard-paths: yes
+  discard-paths: no
