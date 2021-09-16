@@ -33,6 +33,7 @@ phases:
 
 artifacts:
   files:
+    - './utils/'
     - 'buildspec*'
     - './Dockerrun.aws.json'
   discard-paths: yes
