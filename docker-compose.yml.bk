@@ -1,0 +1,22 @@
+version: '3'
+services:
+  tasks:
+    image: 652304321750.dkr.ecr.eu-central-1.amazonaws.com/tasks:latest
+    ports:
+      - 80:8080
+#  flask:
+#    image: anotheruserdocker/beanstalk-flask
+#    ports:
+#      - 5000:5000
+
+
+version: '3.8'
+services:
+  beanstalk-flask:
+    image: "anotheruserdocker/beanstalk-flask"
+    ports:
+      - "80:5000"
+  tasks:
+    image: "652304321750.dkr.ecr.eu-central-1.amazonaws.com/tasks:latest"
+    ports:
+      - "80:8080"
