@@ -3,7 +3,7 @@
 Tasks is a simplistic Go webapp to manage tasks, I built this tool to manage tasks which I wanted to do, there are many good kanban style boards, but I felt they were a bit too heavyweight for my taste. Also I wanted to learn the Go webapp development.
 
 How to use?
-==================
+===================
 Via script: `bash install.sh`
 
 This will generate the binary and set up the database. If you want, you can copy the binary and the public folder into a folder of your choice.
